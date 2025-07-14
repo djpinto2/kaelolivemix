@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mensajes de Contacto - Admin</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #181818; color: #fff; }
+    h1 { color: #ff9100; }
+    table { width: 100%; border-collapse: collapse; background: #222; }
+    th, td { border: 1px solid #444; padding: 8px; }
+    th { background: #333; }
+    tr:nth-child(even) { background: #242424; }
+    .container { max-width: 900px; margin: 40px auto; }
+    #not-auth { display: flex; flex-direction: column; align-items: center; margin-top: 100px; }
+    #not-auth button { padding: 8px 16px; background: #ff9100; color: #fff; border: none; border-radius: 4px; cursor: pointer; margin-top: 16px; }
+    #not-auth button:hover { background: #ffb84d; color: #222; }
+  </style>
+</head>
+<body>
+  <div class="container" id="admin-content" style="display:none;">
+    <h1>Mensajes de Contacto</h1>
+    <button onclick="logout()" style="float:right;margin-bottom:12px;">Cerrar sesión</button>
+    <table id="messages-table">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Nombre</th>
+          <th>Email</th>
+          <th>Mensaje</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Mensajes aquí -->
+      </tbody>
+    </table>
+  </div>
+  <div id="not-auth" style="display:none;">
+    <h2>Acceso restringido</h2>
+    <p>Debes iniciar sesión como administrador para ver los mensajes.</p>
+    <button onclick="window.location.href='about.html'">Ir a inicio de sesión</button>
+  </div>
+  <script>
+    // Solo mostrar si el usuario autenticado es 'segundo'
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    let currentUser = null;
+    if (isLoggedIn) {
+      // Buscar el usuario logueado
+      const userMail = localStorage.getItem('userMail');
+      currentUser = users.find(u => u.mail === userMail);
+    }
+    if (isLoggedIn && currentUser && currentUser.user === 'segundo') {
+      document.getElementById('admin-content').style.display = 'block';
+      loadMessages();
+    } else {
+      document.getElementById('not-auth').style.display = 'flex';
+    }
+    function loadMessages() {
+      fetch('/api/messages')
+        .then(res => res.json())
+        .then(data => {
+          const tbody = document.querySelector('#messages-table tbody');
+          if (data.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="4">No hay mensajes.</td></tr>';
+          } else {
+            tbody.innerHTML = data.map(msg => `
+              <tr>
+                <td>${new Date(msg.fecha_envio).toLocaleString()}</td>
+                <td>${msg.nombre}</td>
+                <td>${msg.email}</td>
+                <td>${msg.mensaje.replace(/\n/g, '<br>')}</td>
+              </tr>
+            `).join('');
+          }
+        })
+        .catch(err => {
+          document.querySelector('#messages-table tbody').innerHTML = '<tr><td colspan="4">Error cargando mensajes.</td></tr>';
+        });
+    }
+    function logout() {
+      localStorage.removeItem('isLoggedIn');
+      localStorage.removeItem('userMail');
+      window.location.href = 'about.html';
+    }
+  </script>
+</body>
+</html> 

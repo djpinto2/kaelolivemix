@@ -1,0 +1,45 @@
+<section id="contact" class="page-section" style="display:block;">
+  <h2 class="section-title">CONTACT</h2>
+  <div class="section-underline"></div>
+  <form id="contact-form" style="max-width:400px;margin:0 auto 2em auto;display:flex;flex-direction:column;gap:1em;">
+    <input type="text" name="name" placeholder="Your Name" required style="padding:12px;font-size:1.1em;border-radius:8px;border:1.5px solid #ff9100;">
+    <input type="email" name="email" placeholder="Your Email" required style="padding:12px;font-size:1.1em;border-radius:8px;border:1.5px solid #ff9100;">
+    <textarea name="message" placeholder="Your Message" required rows="4" style="padding:12px;font-size:1.1em;border-radius:8px;border:1.5px solid #ff9100;"></textarea>
+    <button type="submit" style="background:#ff9100;color:#181818;font-weight:700;font-size:1.1em;padding:12px 0;border:none;border-radius:8px;cursor:pointer;">Send</button>
+    <div id="contact-status" style="margin-top:0.5em;font-size:1em;"></div>
+  </form>
+  <ul class="contact-list">
+    <li><span class="contact-icon">📞</span> 1149695304</li>
+    <li><span class="contact-icon">🌐</span> ig: @kaelo.ar</li>
+    <li><span class="contact-icon">✉️</span> kaeloar@gmail.com</li>
+    <li><span class="contact-icon">📍</span> Buenos Aires, Argentina</li>
+  </ul>
+</section>
+<script>
+document.getElementById('contact-form').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const status = document.getElementById('contact-status');
+  status.textContent = 'Sending...';
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    message: form.message.value
+  };
+  try {
+    const res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      status.textContent = 'Message sent!';
+      form.reset();
+    } else {
+      status.textContent = 'Error sending message.';
+    }
+  } catch {
+    status.textContent = 'Error sending message.';
+  }
+});
+</script> 

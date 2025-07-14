@@ -1,0 +1,35 @@
+<section id="about" class="page-section" style="display:block; background: none; box-shadow: none; border: none; padding: 0;">
+  <div class="about-flex about-flex-text">
+    <h2 class="section-title">ABOUT ME</h2>
+    <div class="section-underline"></div>
+    <p class="about-text">
+      My beginnings as a DJ started at age 13 at social events. I've always been passionate about music and built my career around it. In 2022, I started as a warm-up DJ at Moscu (formerly Pacha) until 2024. Today, I play at various nightclubs in Buenos Aires and continue doing what I love; electronic music.<br><br>
+    </p>
+  </div>
+  <div class="login-panel" id="login-panel" style="max-width:400px;margin:32px auto 0 auto;padding:32px 28px;background:rgba(24,24,24,0.92);border-radius:18px;box-shadow:0 4px 32px #ff910044,0 1.5px 8px #000a;display:flex;flex-direction:column;gap:1.2em;align-items:center;">
+    <h3 style="color:#ff9100;font-family:'Poppins',sans-serif;margin-bottom:8px;">Iniciar sesión</h3>
+    <form id="login-form" autocomplete="on" aria-label="Formulario de inicio de sesión" role="form" style="width:100%;display:flex;flex-direction:column;gap:1.2em;align-items:center;">
+      <input id="login-user" type="text" placeholder="Usuario" style="width:100%;padding:12px 10px;border-radius:8px;border:1.5px solid #ff9100;font-size:1.1em;background:#181818;color:#fff;outline:none;" aria-label="Usuario" autocomplete="username">
+      <input id="login-pass" type="password" placeholder="Contraseña" style="width:100%;padding:12px 10px;border-radius:8px;border:1.5px solid #ff9100;font-size:1.1em;background:#181818;color:#fff;outline:none;" aria-label="Contraseña" autocomplete="current-password">
+      <button id="login-btn" style="width:100%;background:#ff9100;color:#181818;font-weight:700;font-size:1.1em;padding:12px 0;border:none;border-radius:8px;cursor:pointer;outline:none;">Acceder</button>
+      <div id="login-error" style="color:#ff4444;font-size:1em;min-height:1.5em;"></div>
+      <div style="margin-top:10px;text-align:center;width:100%;">
+        <a href="#" id="show-register" style="color:#ff9100;text-decoration:underline;cursor:pointer;font-size:1em;">¿No tienes cuenta? Registrarse</a>
+      </div>
+    </form>
+  </div>
+  <div class="register-panel" id="register-panel" style="max-width:400px;margin:24px auto 0 auto;padding:28px 24px;background:rgba(24,24,24,0.92);border-radius:18px;box-shadow:0 4px 32px #ff910022,0 1.5px 8px #000a;display:none;flex-direction:column;gap:1.1em;align-items:center;">
+    <h3 style="color:#ff9100;font-family:'Poppins',sans-serif;margin-bottom:8px;">Registrarse</h3>
+    <form id="register-form" autocomplete="on" aria-label="Formulario de registro" role="form" style="width:100%;display:flex;flex-direction:column;gap:1.1em;align-items:center;">
+      <input id="register-user" type="text" placeholder="Usuario" style="width:100%;padding:12px 10px;border-radius:8px;border:1.5px solid #ff9100;font-size:1.1em;background:#181818;color:#fff;outline:none;" aria-label="Usuario" autocomplete="username">
+      <input id="register-mail" type="email" placeholder="Email" style="width:100%;padding:12px 10px;border-radius:8px;border:1.5px solid #ff9100;font-size:1.1em;background:#181818;color:#fff;outline:none;" aria-label="Email" autocomplete="email">
+      <input id="register-pass" type="password" placeholder="Contraseña" style="width:100%;padding:12px 10px;border-radius:8px;border:1.5px solid #ff9100;font-size:1.1em;background:#181818;color:#fff;outline:none;" aria-label="Contraseña" autocomplete="new-password">
+      <select id="register-payment" aria-label="Método de pago" style="width:100%;padding:12px 10px;border-radius:8px;border:1.5px solid #ff9100;font-size:1.1em;background:#181818;color:#fff;outline:none;">
+        <option value="mercadopago">MercadoPago</option>
+      </select>
+      <button id="register-btn" style="width:100%;background:#ff9100;color:#181818;font-weight:700;font-size:1.1em;padding:12px 0;border:none;border-radius:8px;cursor:pointer;outline:none;">Registrarse</button>
+      <div id="register-error" style="color:#ff4444;font-size:1em;min-height:1.5em;"></div>
+      <div id="register-success" style="color:#44ff44;font-size:1em;min-height:1.5em;"></div>
+    </form>
+  </div>
+</section> 
