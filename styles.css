@@ -595,15 +595,32 @@ a[data-goto]:hover {
   transform: scaleX(1);
 }
 @media (max-width: 700px) {
-  .top-navbar {
-    height: 54px;
+  .top-navbar, .top-navbar-menu {
+    display: none !important;
   }
-  .top-navbar-menu {
-    gap: 18px;
+  .sidebar-toggle {
+    display: flex !important;
+    width: 36px;
+    height: 36px;
+    left: 10px;
+    top: 10px;
+    z-index: 20001;
+    padding: 0;
   }
-  .top-navbar-link {
-    font-size: 1rem;
-    padding: 6px 8px 4px 8px;
+  .sidebar-toggle-shape {
+    width: 28px;
+    height: 28px;
+    gap: 3px;
+  }
+  .sidebar-toggle-shape .bar {
+    width: 20px;
+    height: 3px;
+  }
+  header {
+    padding-top: 18px;
+  }
+  .main-logo {
+    margin-top: 12px;
   }
 }
 
