@@ -886,12 +886,17 @@ img, video {
 
 @media (max-width: 700px) {
   .sidebar-toggle {
+    display: flex !important;
+    position: absolute !important;
+    left: 10px !important;
+    top: 10px !important;
     width: 36px;
     height: 36px;
-    left: 10px;
-    top: 10px;
-    z-index: 20001;
+    z-index: 30000;
     padding: 0;
+    margin: 0;
+    background: none;
+    box-shadow: none;
   }
   .sidebar-toggle-shape {
     width: 28px;
@@ -904,8 +909,12 @@ img, video {
   }
   header {
     padding-top: 18px;
+    position: relative;
   }
   .main-logo {
     margin-top: 12px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
   }
 } 
