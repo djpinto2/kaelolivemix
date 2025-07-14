@@ -7,27 +7,42 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 window.addEventListener('DOMContentLoaded', function() {
+  // Fix autoplay video intro en móviles
+  const introVideo = document.querySelector('.intro-bg-video');
+  if (introVideo) {
+    introVideo.muted = true;
+    introVideo.playsInline = true;
+    introVideo.autoplay = true;
+    introVideo.load();
+    introVideo.play().catch(() => {});
+  }
+
+  // --- Código de menú hamburguesa ---
+  const menuIcon = document.querySelector('.menu-icon');
+  const navUl = document.querySelector('nav ul');
+  if(menuIcon && navUl) {
+    menuIcon.addEventListener('click', function() {
+      navUl.classList.toggle('active');
+    });
+  }
+
+  // --- Código de intro y SPA ---
   const introGate = document.getElementById('intro-gate');
   const intro = document.getElementById('intro');
   const mainContent = document.getElementById('main-content');
   const audio = document.getElementById('intro-audio');
-
-  // Ocultar intro y mostrar solo el gate al inicio
-  intro.style.display = 'none';
-  mainContent.style.display = 'none';
-  if (introGate) introGate.style.display = 'flex';
-  audio.muted = true; // Asegurar que el audio esté muteado al entrar al sitio
-
-  // Al hacer click en el gate, mostrar intro y reproducir audio
-  if (introGate) {
+  if (intro && mainContent && introGate) {
+    intro.style.display = 'none';
+    mainContent.style.display = 'none';
+    introGate.style.display = 'flex';
+    audio.muted = true;
     introGate.addEventListener('click', function() {
       introGate.classList.add('fade-out');
       setTimeout(() => {
         introGate.style.display = 'none';
         intro.style.display = 'flex';
         playIntroAudio();
-        audio.muted = false; // Quitar mute inmediatamente tras el clic
-        // Detener música y mostrar contenido principal después de 7.5 segundos
+        audio.muted = false;
         setTimeout(() => {
           audio.pause();
           audio.currentTime = 0;
@@ -35,20 +50,17 @@ window.addEventListener('DOMContentLoaded', function() {
           setTimeout(() => {
             intro.style.display = 'none';
             mainContent.style.display = 'block';
-            // Mostrar la sidebar y el botón de menú después de la intro
             const sidebar = document.getElementById('sidebar');
             if (sidebar) sidebar.style.display = '';
             const sidebarToggle = document.getElementById('sidebar-toggle');
             if (sidebarToggle) sidebarToggle.style.display = '';
           }, 1200);
         }, 7500);
-      }, 1200); // Espera a que termine el fade-out del intro-gate
+      }, 1200);
     });
   }
-
-  // Función para reproducir el audio de la intro
   function playIntroAudio() {
-    audio.muted = true; // Iniciar en mute para autoplay
+    audio.muted = true;
     audio.currentTime = 4;
     audio.volume = 1.0;
     audio.play();
