@@ -75,17 +75,18 @@ window.addEventListener('DOMContentLoaded', function() {
   function loadSection(section) {
     let file = '';
     switch(section) {
-      case 'about': file = 'about.html'; break;
-      case 'genres': file = 'genres.html'; break;
-      case 'clubs': file = 'clubs.html'; break;
-      case 'contact': file = 'contact.html'; break;
-      case 'gallery': file = 'gallery.html'; break;
-      case 'videos': file = 'videos.html'; break;
-      case 'contactme': file = 'contactme.html'; break;
-      case 'seeclubs': file = 'seeclubs.html'; break;
-      case 'spotify': file = 'spotify.html'; break;
-      case 'curso': file = 'curso.html'; break;
-      default: file = 'about.html';
+      case 'about': file = 'pages/about.html'; break;
+      case 'genres': file = 'pages/genres.html'; break;
+      case 'clubs': file = 'pages/clubs.html'; break;
+      case 'contact': file = 'pages/contact.html'; break;
+      case 'gallery': file = 'pages/gallery.html'; break;
+      case 'videos': file = 'pages/videos.html'; break;
+      case 'contactme': file = 'pages/contact.html'; break;
+      case 'seeclubs': file = 'pages/seeclubs.html'; break;
+      case 'spotify': file = 'pages/spotify.html'; break;
+      case 'curso': file = 'pages/curso.html'; break;
+      case 'admin-mensajes': file = 'pages/admin-mensajes.html'; break;
+      default: file = 'pages/about.html';
     }
     // Loader animado
     pageContent.innerHTML = `<div class='loader'><span class='loader-dot'></span><span class='loader-dot'></span><span class='loader-dot'></span></div>`;
