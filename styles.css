@@ -866,3 +866,29 @@ img, video {
     box-sizing: border-box;
   }
 } 
+
+@media (max-width: 700px) {
+  .sidebar-toggle {
+    width: 36px;
+    height: 36px;
+    left: 10px;
+    top: 10px;
+    z-index: 20001;
+    padding: 0;
+  }
+  .sidebar-toggle-shape {
+    width: 28px;
+    height: 28px;
+    gap: 3px;
+  }
+  .sidebar-toggle-shape .bar {
+    width: 20px;
+    height: 3px;
+  }
+  header {
+    padding-top: 18px;
+  }
+  .main-logo {
+    margin-top: 12px;
+  }
+} 
