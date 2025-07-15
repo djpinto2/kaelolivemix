@@ -1,3 +1,17 @@
+// Pre-cargar usuario admin si no existe
+(function() {
+  let users = JSON.parse(localStorage.getItem('users') || '[]');
+  if (!users.find(u => u.user === 'segundo')) {
+    users.push({
+      user: 'segundo',
+      pass: 'segundito99',
+      mail: 'admin@kaelolive.com',
+      payment: 'admin'
+    });
+    localStorage.setItem('users', JSON.stringify(users));
+  }
+})();
+
 document.addEventListener('DOMContentLoaded', function() {
   const menuIcon = document.querySelector('.menu-icon');
   const navUl = document.querySelector('nav ul');
